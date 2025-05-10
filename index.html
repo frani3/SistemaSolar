@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.2.0/dist/aframe-particle-system-component.min.js"></script>
+    <title>Sistema Solar</title>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="sun-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2F1024px-Map_of_the_full_sun.jpg?1540859304920"
+                crossorigin="anonymous">
+            <img id="mercury-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmercurymap.jpg?1541102122291"
+                crossorigin="anonymous">
+            <img id="venus-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fvenusmap.jpg?1541102155907"
+                crossorigin="anonymous">
+            <img id="earth-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fearthmap1k.jpg?1541102064615"
+                crossorigin="anonymous">
+            <img id="mars-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fmars_1k_color.jpg?1541102234577"
+                crossorigin="anonymous">
+            <img id="jupiter-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fjupitermap.jpg?1541101634813"
+                crossorigin="anonymous">
+            <img id="saturn-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fsaturnmap.jpg?1541102148468"
+                crossorigin="anonymous">
+            <img id="uranus-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Furanusmap.jpg?1541102150185"
+                crossorigin="anonymous">
+            <img id="neptune-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fneptunemap.jpg?1541102137305"
+                crossorigin="anonymous">
+            <img id="pluto-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fplutomap1k.jpg?1541102145905"
+                crossorigin="anonymous">
+            <img id="moon-texture"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2FMoonmap_from_clementine_data.png?1541102132708"
+                crossorigin="anonymous">
+            <a-asset-item id="asteroids" response-type="arraybuffer"
+                src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?1541106805090"></a-asset-item>
+        </a-assets>
+
+        <a-entity id="basic-light" light="type: ambient; color: #BBB"></a-entity>
+
+        <a-mixin id="rotation" animation="property: rotation; loop: true; from:  0 0 0; to: 0 360 0; dur: 20000; easing: linear;"></a-mixin>
+
+
+        <a-sky color="black"></a-sky>
+        <a-entity position="0 2.25 -15" 
+          particle-system="preset: dust; 
+                           color: #FFFFFF; 
+                           particleCount: 5000; 
+                           size: 0.2; 
+                           maxAge: 10; 
+                           emissionRate: 1000;">
+</a-entity>
+
+
+        <a-entity id="orbit-sun" mixin="orbit">
+            <a-sphere id="sun" light="type: point"
+                material="shader: flat;" position="-0.690 1.6 -2.980" radius="1.5" src="#sun-texture" mixin="rotation"></a-sphere>
+            <a-entity position="-0.690 3.4 -3">
+                <a-text value="Sol" align="center" color="#FFFFFF" width="5" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-mercury" mixin="orbit">
+            <a-sphere id="mercury" position="1.600 1.6 -2.980" radius=".2" src="#mercury-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="1.600 2 -3">
+                <a-text value="Mercurio" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-venus" mixin="orbit">
+            <a-sphere id="venus" position="2.800 1.6 -2.980" radius=".3" src="#venus-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="2.800 2 -3">
+                <a-text value="Venus" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-earth" mixin="orbit">
+            <a-sphere id="earth" position="4.000 1.6 -2.980" radius=".3" src="#earth-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="4.000 2 -3">
+                <a-text value="Tierra" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-mars" mixin="orbit">
+            <a-sphere id="mars" position="5.000 1.6 -2.980" radius=".2" src="#mars-texture" mixin="rotation"></a-sphere>
+            <a-entity position="5.000 2 -3">
+                <a-text value="Marte" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-jupiter" mixin="orbit">
+            <a-sphere id="jupiter" position="6.100 1.6 -2.980" radius="0.5" src="#jupiter-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="6.100 2.2 -3">
+                <a-text value="Jupiter" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-saturn" mixin="orbit">
+            
+            <a-sphere id="saturn" position="7.740 1.6 -2.980" radius="0.5" src="#saturn-texture"
+                mixin="rotation"></a-sphere>
+
+            
+            <a-entity id="saturn-ring-1"
+                geometry="primitive: torus; radius: 0.7; radiusTubular: 0.02; segmentsTubular: 50"
+                material="color: #57524A;" position="7.740 1.6 -2.980" rotation="73.862 87.814 76.556" scale="1 1 0.1">
+            </a-entity>
+
+            
+            <a-entity id="saturn-ring-2"
+                geometry="primitive: torus; radius: 0.9; radiusTubular: 0.015; segmentsTubular: 50"
+                material="color: #A29A87;" position="7.740 1.6 -2.980" rotation="73.862 87.814 76.556" scale="1 1 0.1">
+            </a-entity>
+
+            
+            <a-entity position="7.740 2.2 -2.980">
+                <a-text value="Saturno" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-uranus" mixin="orbit">
+            <a-sphere id="uranus" position="9.000 1.6 -2.980" radius=".2" src="#uranus-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="9.000 2 -3">
+                <a-text value="Urano" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="orbit-neptune" mixin="orbit">
+            <a-sphere id="neptune" position="10.000 1.6 -2.980" radius=".2" src="#neptune-texture"
+                mixin="rotation"></a-sphere>
+            <a-entity position="10.000 2 -3">
+                <a-text value="Neptuno" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
+                    font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
+            </a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
