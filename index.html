@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.2.0/dist/aframe-particle-system-component.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.2.0/dist/aframe-particle-system-component.min.js"></script>
     <title>Sistema Solar</title>
 </head>
 
@@ -49,25 +50,30 @@
                 src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?1541106805090"></a-asset-item>
         </a-assets>
 
+
         <a-entity id="basic-light" light="type: ambient; color: #BBB"></a-entity>
 
-        <a-mixin id="rotation" animation="property: rotation; loop: true; from:  0 0 0; to: 0 360 0; dur: 20000; easing: linear;"></a-mixin>
+        <a-mixin id="rotation"
+            animation="property: rotation; loop: true; from:  0 0 0; to: 0 360 0; dur: 20000; easing: linear;"></a-mixin>
 
 
         <a-sky color="black"></a-sky>
-        <a-entity position="0 2.25 -15" 
-          particle-system="preset: dust; 
+        <a-entity position="0 2.25 -15" particle-system="preset: dust; 
                            color: #FFFFFF; 
                            particleCount: 5000; 
                            size: 0.2; 
                            maxAge: 10; 
                            emissionRate: 1000;">
-</a-entity>
+        </a-entity>
+        
+        <a-entity id="rig" movement-controls position="0 1.6 0">
+            <a-entity camera look-controls wasd-controls position="0 0 0"></a-entity>
+        </a-entity>
 
 
         <a-entity id="orbit-sun" mixin="orbit">
-            <a-sphere id="sun" light="type: point"
-                material="shader: flat;" position="-0.690 1.6 -2.980" radius="1.5" src="#sun-texture" mixin="rotation"></a-sphere>
+            <a-sphere id="sun" light="type: point" material="shader: flat;" position="-0.690 1.6 -2.980" radius="1.5"
+                src="#sun-texture" mixin="rotation"></a-sphere>
             <a-entity position="-0.690 3.4 -3">
                 <a-text value="Sol" align="center" color="#FFFFFF" width="5" side="double" shader="msdf"
                     font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
@@ -119,23 +125,23 @@
         </a-entity>
 
         <a-entity id="orbit-saturn" mixin="orbit">
-            
+
             <a-sphere id="saturn" position="7.740 1.6 -2.980" radius="0.5" src="#saturn-texture"
                 mixin="rotation"></a-sphere>
 
-            
+
             <a-entity id="saturn-ring-1"
                 geometry="primitive: torus; radius: 0.7; radiusTubular: 0.02; segmentsTubular: 50"
                 material="color: #57524A;" position="7.740 1.6 -2.980" rotation="73.862 87.814 76.556" scale="1 1 0.1">
             </a-entity>
 
-            
+
             <a-entity id="saturn-ring-2"
                 geometry="primitive: torus; radius: 0.9; radiusTubular: 0.015; segmentsTubular: 50"
                 material="color: #A29A87;" position="7.740 1.6 -2.980" rotation="73.862 87.814 76.556" scale="1 1 0.1">
             </a-entity>
 
-            
+
             <a-entity position="7.740 2.2 -2.980">
                 <a-text value="Saturno" align="center" color="#FFFFFF" width="2" side="double" shader="msdf"
                     font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
