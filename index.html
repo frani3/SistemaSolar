@@ -65,9 +65,10 @@
                            maxAge: 10; 
                            emissionRate: 1000;">
         </a-entity>
-        
-        <a-entity id="rig" movement-controls position="0 1.6 0">
-            <a-entity camera look-controls wasd-controls position="0 0 0"></a-entity>
+
+        <a-entity id="rig" position="0 1.6 0">
+            <!-- Cámara -->
+            <a-entity camera="userHeight: false" look-controls wasd-controls="acceleration: 200" position="0 0 0"></a-entity>
         </a-entity>
 
 
